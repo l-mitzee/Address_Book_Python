@@ -18,8 +18,18 @@ class Person:
         self.email = email
 
     def addNewPerson(self):
+        """
+        Description:
+            Adding new contact to the contact list
+        """
         Person.contact_list.append(self)
     def getPersonList(self):
+        """
+        Description:
+            Printing new contact list
+        Return:
+            List of contact
+        """
         return Person.contact_list
     def setFirst(self,first):
         self.first = first
