@@ -13,8 +13,8 @@ if __name__ == '__main__':
     print("Welcome to the address book program")
     choice = 1
     person = contacts.Person("", "", "", "", "", 0, 0, "")
-    while choice >= 1 and choice <= 3:
-        print("\n1. Add New Person contact\n2. Get All Person Contact List\n3. Edit existing contact details\n")
+    while choice >= 1 and choice <= 4:
+        print("\n1. Add New Person contact\n2. Get All Person Contact List\n3. Edit existing contact details\n4. Delete existing contact details\n")
         choice = int(input("Enter Your Choice: "))
 
         if(choice == 1):
@@ -44,7 +44,15 @@ if __name__ == '__main__':
             phone_no = int(input("Enter your contact number: "))
             email = input("Enter your email address: ")
             list_contact = person.editContact(first, last, address, city, state, zip, phone_no, email)
-            if(list_contact == False):
+            if(list_contact == True):
                 print("\nUpdate Failed, Contact details not found: ", first)
             else:
                 print("Succesfully Updated contact details ", first)
+
+        elif(choice == 4):
+            first = input("Enter first name to delete the contact details: ")
+            list_contact = person.deleteContact(first)
+            if(list_contact == False):
+                print("\nDelete Failed, Contact details not found: ", first)
+            else:
+                print("Succesfully deleted contact details ", first)

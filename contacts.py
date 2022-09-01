@@ -5,6 +5,9 @@
     @Title : Create an Address Book
 """
 
+from tkinter import FALSE
+
+
 class Person:
     contact_list = []
     def __init__(self, first, last, address, city, state, zip, phone_no, email):
@@ -35,6 +38,8 @@ class Person:
         """
         Description:
             Editing existing contact details using first name
+        Parameter:
+            All value which needs to be edited
         Return:
             If first name in list return True else False
         """
@@ -44,6 +49,19 @@ class Person:
                 return True
             return False    
     
+    def deleteContact(self, first):
+        """
+        Description:
+            deleting existing contact details using first name
+        Return:
+            If first name in list return True else False
+        """
+        for list_contact in Person.contact_list:
+            if(list_contact.getFirst() == first):
+                Person.contact_list.remove(list_contact)
+                return True
+            return False
+
     def setFirst(self,first):
         self.first = first
     def getFirst(self):
