@@ -18,9 +18,32 @@ class Person:
         self.email = email
 
     def addNewPerson(self):
+        """
+        Description:
+            Adding new contact to the contact list
+        """
         Person.contact_list.append(self)
     def getPersonList(self):
+        """
+        Description:
+            Printing new contact list
+        Return:
+            List of contact
+        """
         return Person.contact_list
+    def editContact(self, first, last, address, city, state, zip, phone_no, email):
+        """
+        Description:
+            Editing existing contact details using first name
+        Return:
+            If first name in list return True else False
+        """
+        for list_contact in Person.contact_list:
+            if(list_contact.getFirst() == first):
+                list_contact.first, list_contact.last, list_contact.address, list_contact.city, list_contact.state, list_contact.zip, list_contact.phone_no, list_contact.email = first, last, address, city, state, zip, phone_no, email
+                return True
+            return False    
+    
     def setFirst(self,first):
         self.first = first
     def getFirst(self):
