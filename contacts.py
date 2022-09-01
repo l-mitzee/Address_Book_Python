@@ -6,6 +6,7 @@
 """
 
 class Person:
+    contact_list = []
     def __init__(self, first, last, address, city, state, zip, phone_no, email):
         self.first = first
         self.last = last
@@ -16,6 +17,10 @@ class Person:
         self.phone_no = phone_no
         self.email = email
 
+    def addNewPerson(self):
+        Person.contact_list.append(self)
+    def getPersonList(self):
+        return Person.contact_list
     def setFirst(self,first):
         self.first = first
     def getFirst(self):
