@@ -1,7 +1,7 @@
 """
     @Author: Lisa Das
     @Date: 2022-08-31
-    @Last Modified time: 2022-09-02
+    @Last Modified date: 2022-09-02
     @Title : Create an Address Book
 """
 
@@ -34,3 +34,23 @@ class AddressBook:
             List of contact in the form of dictionery
         """
         self.contacts.append(contact)
+
+    def edit_contact(self, first, new_name):
+        """
+        Description:
+            Editing existing contact to the list
+        Parameter:
+            First name and new contact details
+        Return:
+            List of contact in the form of dictionery
+        """
+        for contact in self.contacts:
+            if contact["first"] == first:
+                contact["first"] = new_name["first"]
+                contact["last"] = new_name["Last"]
+                contact["address"] = new_name["address"]
+                contact["city"] = new_name["city"]
+                contact["state"] = new_name["state"]
+                contact["zip_code"] = new_name["zip_code"]
+                contact["phone_no"] = new_name["phone_no"]
+                contact["email"] = new_name["email"]
