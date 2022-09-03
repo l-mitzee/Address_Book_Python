@@ -11,9 +11,10 @@ from contacts import Person, AddressBook
 # Driver code
 if __name__ == '__main__':
     print("Welcome to the address book program")
+    person = Person("", "", "", "", "", 0, 0, "")
     choice = 1
     while choice >= 1 and choice <= 2:
-        print("\n1. Add New Person contact\n2. Edit existing contact details\n")
+        print("\n1. Add New Person contact\n2. Edit existing contact details\n3. Delete existing contact details\n")
         choice = int(input("Enter Your Choice: "))
         if(choice == 1):
             first = input("Enter your first name: ")
@@ -42,4 +43,11 @@ if __name__ == '__main__':
             edited_list_person = Person(first, last, address, city, state, zip_code, phone_no, email)
             address_book = AddressBook()
             print(edited_list_person.get)
-            address_book.edit_contact(first_name, edited_list_person)    
+            address_book.edit_contact(first_name, edited_list_person) 
+
+
+        elif(choice == 3):
+            first_name_delete = input("Enter the first name which you want to delete: ")
+            address_book = AddressBook()
+            address_book.delete_contact(list_person.get)
+            print("Contact deleted successfully")

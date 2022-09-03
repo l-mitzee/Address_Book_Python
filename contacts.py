@@ -54,3 +54,14 @@ class AddressBook:
                 contact["zip_code"] = new_name["zip_code"]
                 contact["phone_no"] = new_name["phone_no"]
                 contact["email"] = new_name["email"]
+
+    def delete_contact(self, first):
+        """
+        Description:
+            Deleting existing contact to the list
+        Parameter:
+            First name to search for details
+        """
+        for i, contact in enumerate(self.contacts):
+            if contact["first"] == first:
+                del self.contacts[i]
