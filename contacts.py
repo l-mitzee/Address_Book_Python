@@ -34,7 +34,7 @@ class AddressBook:
             List of contact in the form of dictionery
         """
         self.contacts.append(contact)
-
+    
     def edit_contact(self, first, new_name):
         """
         Description:
@@ -47,7 +47,7 @@ class AddressBook:
         for contact in self.contacts:
             if contact["first"] == first:
                 contact["first"] = new_name["first"]
-                contact["last"] = new_name["Last"]
+                contact["last"] = new_name["last"]
                 contact["address"] = new_name["address"]
                 contact["city"] = new_name["city"]
                 contact["state"] = new_name["state"]
