@@ -65,3 +65,12 @@ class AddressBook:
         for i, contact in enumerate(self.contacts):
             if contact["first"] == first:
                 del self.contacts[i]
+
+    def display_contact(self):
+        """
+        Description:
+            Display existing contact to the list
+        Return:
+            List of contact which is present else empty list
+        """
+        print(self.contacts)
