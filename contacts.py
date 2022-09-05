@@ -1,7 +1,7 @@
 """
     @Author: Lisa Das
-    @Date: 2022-08-31
-    @Last Modified date: 2022-09-02
+    @Date: 2022-08-02
+    @Last Modified date: 2022-09-05
     @Title : Create an Address Book
 """
 
@@ -23,6 +23,10 @@ class Person:
 class AddressBook:
     def __init__(self):
         self.contacts = []
+
+    @property
+    def get(self):
+        return self.contacts
 
     def add_contact(self, contact):
         """

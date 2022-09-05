@@ -1,20 +1,23 @@
 """
     @Author: Lisa Das
-    @Date: 2022-08-31
-    @Last Modified date: 2022-09-02
+    @Date: 2022-09-05
+    @Last Modified date: 2022-09-05
     @Title : Create an Address Book
 """
 
 # Importing contacts module
 from contacts import Person, AddressBook
+from addressbook_collection import MulAddressBook
+
 
 # Driver code
 if __name__ == '__main__':
     print("Welcome to the address book program")
     choice = 1
     address_book = AddressBook()
-    while choice >= 1 and choice <= 5:
-        print("\n1. Add New Person contact\n2. Edit existing contact details\n3. Delete existing contact details\n4. Display existing contact details\n5. multi existing contact details\n")
+    address_book_collection = MulAddressBook()
+    while choice >= 1 and choice <= 6:
+        print("\n1. Add New Person contact\n2. Edit existing contact details\n3. Delete existing contact details\n4. Display contact details\n5. Select address book name\n6.Add address book contact details\n")
         choice = int(input("Enter Your Choice: "))
         if(choice == 1):
             first = input("Enter your first name: ")
@@ -26,8 +29,9 @@ if __name__ == '__main__':
             phone_no = int(input("Enter your contact number: "))
             email = input("Enter your email address: ")
             list_person = Person(first, last, address, city, state, zip_code, phone_no, email)
-            print(list_person.get)
+            # print(list_person.get)
             address_book.add_contact(list_person.get)
+            address_book.display_contact()
 
         elif(choice == 2):
             first_name = input("Enter the first name which you want to change: ")
@@ -40,7 +44,6 @@ if __name__ == '__main__':
             phone_no = int(input("Enter your contact number: "))
             email = input("Enter your email address: ")
             edited_list_person = Person(first, last, address, city, state, zip_code, phone_no, email)
-            # address_book = AddressBook()
             print(edited_list_person.get)
             address_book.edit_contact(first_name, edited_list_person.get) 
 
@@ -50,5 +53,9 @@ if __name__ == '__main__':
             print("Contact deleted successfully")     
 
         elif(choice == 4):
-            address_book.display_contact()
+            address_book_collection.show_contacts()
             print("Contact displayed")
+
+        elif(choice == 5):
+            address_book_name = input("Enter the name of the address book: ")
+            address_book = address_book_collection.select_address_book(address_book_name, address_book)
