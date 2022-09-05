@@ -16,8 +16,8 @@ if __name__ == '__main__':
     choice = 1
     address_book = AddressBook()
     address_book_collection = MulAddressBook()
-    while choice >= 1 and choice <= 6:
-        print("\n1. Add New Person contact\n2. Switch to the Address Book \n3. Edit existing contact details\n4. Delete existing contact details\n5. Display contact details\n6. Display Full address book contact details\n")
+    while choice >= 1 and choice <= 9:
+        print("\n1. Add New Person contact\n2. Switch to the Address Book \n3. Edit existing contact details\n4. Delete existing contact details\n5. Searching contacts as per city \n6. Searching contacts as per state\n7. Display contact details \n8. Display Full address book contact details\n")
         choice = int(input("Enter Your Choice: "))
 
         if(choice == 1):
@@ -30,8 +30,8 @@ if __name__ == '__main__':
             address = input("Enter your address: ")
             city = input("Enter your city: ")
             state = input("Enter your state: ")
-            zip_code = int(input("Enter zip code: "))
-            phone_no = int(input("Enter your contact number: "))
+            zip_code = input("Enter zip code: ")
+            phone_no = input("Enter your contact number: ")
             email = input("Enter your email address: ")
             list_person = Person(first, last, address, city, state, zip_code, phone_no, email)
             print(list_person.get)
@@ -48,8 +48,8 @@ if __name__ == '__main__':
             address = input("Enter your address: ")
             city = input("Enter your city: ")
             state = input("Enter your state: ")
-            zip_code = int(input("Enter zip code: "))
-            phone_no = int(input("Enter your contact number: "))
+            zip_code = input("Enter zip code: ")
+            phone_no = input("Enter your contact number: ")
             email = input("Enter your email address: ")
             edited_list_person = Person(first, last, address, city, state, zip_code, phone_no, email)
             print(edited_list_person.get)
@@ -61,8 +61,18 @@ if __name__ == '__main__':
             print("Contact deleted successfully")     
 
         elif(choice == 5):
-            address_book.display_contact()
+            city_name = input("Enter name of the city")
+            searched_contact = address_book.search_contact_by_city(city_name)
+            print(searched_contact)
 
         elif(choice == 6):
+            state_name = input("Enter the name of the state ")
+            searched_contact = address_book.search_contact_state(state_name)
+            print(searched_contact)
+
+        elif(choice == 7):
+            address_book.display_contact()
+
+        elif(choice == 8):
             address_book_collection.show_contacts()
             print("All Address Book displayed")

@@ -85,6 +85,36 @@ class AddressBook:
             if contact["first"] == first:
                 del self.contacts[i]
 
+    def search_contact_by_city(self, searching_city):
+        """
+        Description:
+            Searching person in a City
+        Parameter:
+            City name
+        Returns:
+            Contact details of the person from the city
+        """
+        list_of_contact_in_the_city = []
+        for contact in self.contacts:
+            if contact["city"] == searching_city:
+                list_of_contact_in_the_city.append(contact)
+        return list_of_contact_in_the_city
+
+    def search_contact_state(self, searching_state):
+        """
+        Description:
+            Searching person in a state
+        Parameter:
+            State name
+        Returns:
+            Contact details of the person from the state
+        """
+        list_of_contact_in_the_city = []
+        for contact in self.contacts:
+            if contact["state"] == searching_state:
+                list_of_contact_in_the_city.append(contact)
+        return list_of_contact_in_the_city
+
     def display_contact(self):
         """
         Description:
