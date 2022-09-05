@@ -7,12 +7,14 @@
 
 class MulAddressBook:
     def __init__(self):
-        self.mul_contacts = []
-        self.current_address_book = ""
-        self.address_book = {}
+        self.current_address_book = "default"
+        self.address_book_name_with_contacts = {}
 
+    @property
+    def get(self):
+        return self.address_book_name_with_contacts
 
-    def select_address_book(self, address_book_name, new_contacts):
+    def select_address_book(self, address_book_name, current_address_book_contact):
         """
         Description:
             Adding multiple address book with user contact details
@@ -21,17 +23,14 @@ class MulAddressBook:
         Return:
             List of contact with addressbook name
         """
-        if not address_book_name:
-            self.current_address_book = "default"
-        else:
-            self.current_address_book = address_book_name
-        new_contacts.contacts = [] 
-        self.address_book[self.current_address_book] = new_contacts.get
-        return new_contacts
+        self.address_book_name_with_contacts[self.current_address_book] = current_address_book_contact.get
+        self.current_address_book = address_book_name
+        current_address_book_contact.contacts = []
+        return current_address_book_contact
 
     def show_contacts(self):
         """
         Description:
             Showing full address book with individual contact details
         """
-        print(self.address_book)
+        print(self.address_book_name_with_contacts)

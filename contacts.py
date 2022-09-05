@@ -28,7 +28,7 @@ class AddressBook:
     def get(self):
         return self.contacts
 
-    def add_contact(self, contact):
+    def add_contact(self, first, contact):
         """
         Description:
             Adding new contact to the list
@@ -37,7 +37,22 @@ class AddressBook:
         Return:
             List of contact in the form of dictionery
         """
+        
         self.contacts.append(contact)
+
+    def check_duplicate(self, first):
+        """
+        Description:
+            Checking for contact duplicacy
+        Parameter:
+            First name to check for duplicate contact
+        Return:
+            Return True if first name is already present in the list else false
+        """
+        for contact in self.contacts:
+            if contact["first"] == first:
+                return True
+        return False
     
     def edit_contact(self, first, new_name):
         """
