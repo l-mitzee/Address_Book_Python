@@ -10,6 +10,9 @@ class MulAddressBook:
         self.current_address_book = "default"
         self.address_book_name_with_contacts = {}
 
+    @property
+    def get(self):
+        return self.address_book_name_with_contacts
 
     def select_address_book(self, address_book_name, current_address_book_contact):
         """

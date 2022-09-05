@@ -21,7 +21,11 @@ if __name__ == '__main__':
         choice = int(input("Enter Your Choice: "))
 
         if(choice == 1):
-            first = input("Enter your first name: ")
+            while True:
+                first = input("Enter your first name: ")
+                if not address_book.check_duplicate(first):
+                    break
+                print("Enter new contact details")
             last = input("Enter your last name: ")
             address = input("Enter your address: ")
             city = input("Enter your city: ")
@@ -31,7 +35,7 @@ if __name__ == '__main__':
             email = input("Enter your email address: ")
             list_person = Person(first, last, address, city, state, zip_code, phone_no, email)
             print(list_person.get)
-            address_book.add_contact(list_person.get)
+            address_book.add_contact(first, list_person.get)
 
         elif(choice == 2):
             address_book_name = input("Enter the name of the address book: ")
