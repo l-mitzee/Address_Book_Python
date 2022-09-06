@@ -24,8 +24,9 @@ def main():
         6. View contact details as per city
         7. Searching contacts as per state
         8. View contact details as per state
-        9. Display contact details
-        10. Display Full address book contact details\n""")
+        9. View sorted contact list
+        10. Display contact details
+        11. Display Full address book contact details\n""")
 
         choice = int(input("Enter Your Choice: "))
 
@@ -99,11 +100,14 @@ def main():
                     for key in contact:
                         print(key, ' : ', contact[key])
 
-
         elif(choice == 9):
-            address_book.display_contact()
+            sorted_contact_list = address_book.sort_entries()
+            print(sorted_contact_list)
 
         elif(choice == 10):
+            address_book.display_contact()
+
+        elif(choice == 11):
             address_book_collection.show_contacts()
             print("All Address Book displayed")
 

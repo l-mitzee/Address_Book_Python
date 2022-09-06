@@ -151,6 +151,18 @@ class AddressBook:
             set_of_state.add(contact["state"])
         return set_of_state
 
+    def sort_entries(self):
+        """
+        Description:
+            Sorting contact details with the first name
+        Parameter:
+            None
+        Returns:
+            Sorted list of contact
+        """
+        sorted_entries = sorted(self.contacts, key = lambda a: a["first_name"])
+        return sorted_entries
+
     def display_contact(self):
         """
         Description:
