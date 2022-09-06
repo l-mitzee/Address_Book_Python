@@ -61,7 +61,7 @@ if __name__ == '__main__':
             print("Contact deleted successfully")     
 
         elif(choice == 5):
-            city_name = input("Enter name of the city")
+            city_name = input("Enter name of the city ")
             searched_contact = address_book.search_contact_by_city(city_name)
             print(searched_contact)
 

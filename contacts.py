@@ -122,4 +122,6 @@ class AddressBook:
         Return:
             List of contact which is present else empty list
         """
-        print(self.contacts)
+        for contact in self.contacts:
+            for key in contact:
+                print(key, ' : ', contact[key])
