@@ -22,8 +22,8 @@ def main():
         4. Delete existing contact details
         5. Searching contacts as per city
         6. View contact details as per city
-        7. View contact details as per state
-        8. Searching contacts as per state
+        7. Searching contacts as per state
+        8. View contact details as per state
         9. Display contact details
         10. Display Full address book contact details\n""")
 
@@ -78,24 +78,27 @@ def main():
             list_of_city = address_book.view_city()
             for city in list_of_city:
                 print("Name of the city: ", city)
-                contact_list = address_book.search_contact_by_city(city)
-                for contact in contact_list:
+                contact_list_city = address_book.search_contact_by_city(city)
+                print("Total number of contact present in the state: ", len(contact_list_city))
+                for contact in contact_list_city:
                     for key in contact:
                         print(key, ' : ', contact[key])
 
         elif(choice == 7):
-            list_of_state = address_book.view_state()
-            for state in list_of_state:
-                print("Name of the city: ", state)
-                contact_list = address_book.search_contact_state(state)
-                for contact in contact_list:
-                    for key in contact:
-                        print(key, ' : ', contact[key])
-                
-        elif(choice == 8):
             state_name = input("Enter the name of the state ")
             searched_contact = address_book.search_contact_state(state_name)
             print(searched_contact)
+                
+        elif(choice == 8):
+            list_of_state = address_book.view_state()
+            for state in list_of_state:
+                print("Name of the city: ", state)
+                contact_list_state = address_book.search_contact_state(state)
+                print("Total number of contact present in the state: ", len(contact_list_state))
+                for contact in contact_list_state:
+                    for key in contact:
+                        print(key, ' : ', contact[key])
+
 
         elif(choice == 9):
             address_book.display_contact()
