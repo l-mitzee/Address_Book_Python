@@ -163,6 +163,42 @@ class AddressBook:
         sorted_entries = sorted(self.contacts, key = lambda a: a["first_name"])
         return sorted_entries
 
+    def sort_entries_as_per_city(self):
+        """
+        Description:
+            Sorting contact details with the city name
+        Parameter:
+            None
+        Returns:
+            Sorted list of contact as per city
+        """
+        sorted_entries = sorted(self.contacts, key = lambda a: a["city"])
+        return sorted_entries
+
+    def sort_entries_as_per_state(self):
+        """
+        Description:
+            Sorting contact details with the state name
+        Parameter:
+            None
+        Returns:
+            Sorted list of contact as per state name
+        """
+        sorted_entries = sorted(self.contacts, key = lambda a: a["state"])
+        return sorted_entries
+
+    def sort_entries_as_per_zip_code(self):
+        """
+        Description:
+            Sorting contact details with the zip code
+        Parameter:
+            None
+        Returns:
+            Sorted list of contact as per zip code
+        """
+        sorted_entries = sorted(self.contacts, key = lambda a: a["zip_code"])
+        return sorted_entries
+
     def display_contact(self):
         """
         Description:

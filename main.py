@@ -14,7 +14,7 @@ def main():
     choice = 1
     address_book = AddressBook()
     address_book_collection = MulAddressBook()
-    while choice >= 1 and choice <= 9:
+    while choice >= 1 and choice <= 13:
         print("""
         1. Add New Person contact
         2. Switch to the Address Book
@@ -25,8 +25,9 @@ def main():
         7. Searching contacts as per state
         8. View contact details as per state
         9. View sorted contact list
-        10. Display contact details
-        11. Display Full address book contact details\n""")
+        10. Sort contact list as per city , state or zip code
+        11. Display contact details
+        12. Display Full address book contact details\n""")
 
         choice = int(input("Enter Your Choice: "))
 
@@ -105,9 +106,21 @@ def main():
             print(sorted_contact_list)
 
         elif(choice == 10):
-            address_book.display_contact()
+            check_city_state_zip = int(input("1. Sort contact by city name \n 2. Sort contact by state name \n 3. Sort contact by zip code  "))
+            if check_city_state_zip == 1:
+                sorted_contact_list = address_book.sort_entries_as_per_city()
+                print(sorted_contact_list)
+            elif check_city_state_zip == 2:
+                sorted_contact_list = address_book.sort_entries_as_per_state()
+                print(sorted_contact_list)
+            else:
+                sorted_contact_list = address_book.sort_entries_as_per_zip_code()
+                print(sorted_contact_list)
 
         elif(choice == 11):
+            address_book.display_contact()
+
+        elif(choice == 12):
             address_book_collection.show_contacts()
             print("All Address Book displayed")
 
