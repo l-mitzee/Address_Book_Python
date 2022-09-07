@@ -31,7 +31,6 @@ class Person:
 class AddressBook:
     def __init__(self):
         self.contacts = []
-
     @property
     def get(self):
         return self.contacts
@@ -160,7 +159,7 @@ class AddressBook:
         Returns:
             Sorted list of contact
         """
-        sorted_entries = sorted(self.contacts, key = lambda a: a["first_name"])
+        sorted_entries = sorted(self.contacts, key = lambda a: a["first"])
         return sorted_entries
 
     def sort_entries_as_per_city(self):
@@ -199,6 +198,37 @@ class AddressBook:
         sorted_entries = sorted(self.contacts, key = lambda a: a["zip_code"])
         return sorted_entries
 
+    def write_txt(self):
+        """
+        Description:
+            Writing all contacts in text file
+        Parameter:
+            None 
+        Returns:
+            None
+        """
+        with open("address_books_contact.txt", "w") as text_file:
+            for contact in self.contacts:
+                text_file.write(f'First_Name : {contact["first"]}, Last_Name : {contact["last"]}, Address : {contact["address"]}, City_Name : {contact["city"]}, State_Name : {contact["state"]}, Zip_Code : {contact["zip_code"]}, Phone_Number : {contact["phone_no"]}, Email_ID : {contact["email"]} \n')
+                text_file.close()
+
+    def read_txt(self):
+        """
+        Description:
+            Reading data from text file
+        Parameter:
+            None
+        Returns:
+            None
+        """
+        try:
+            with open("address_books_contact.txt") as text_file:
+                data = text_file.read()
+                print(data)
+        except FileNotFoundError:
+            print("File not Found")
+
+
     def display_contact(self):
         """
         Description:
@@ -209,3 +239,19 @@ class AddressBook:
         for contact in self.contacts:
             for key in contact:
                 print(key, ' : ', contact[key])
+
+    def print_contact_list(self, contact_list):
+        """
+        Description:
+            Printing the list in string with proper format
+        Parameter:
+            Incoming list which needs to be printed
+        Returns:
+            The complete  list
+        """
+        list_of_contact = ""
+        count = 1
+        for contact in contact_list:
+            list_of_contact = f'Contact {count}\nFirst_Name : {contact["first"]}, Last_Name : {contact["last"]}, Address : {contact["address"]}, City_Name : {contact["city"]}, State_Name : {contact["state"]}, Zip_Code : {contact["zip_code"]}, Phone_Number : {contact["phone_no"]}, Email_ID : {contact["email"]} \n'
+            count += 1
+        return list_of_contact

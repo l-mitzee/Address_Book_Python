@@ -14,7 +14,7 @@ def main():
     choice = 1
     address_book = AddressBook()
     address_book_collection = MulAddressBook()
-    while choice >= 1 and choice <= 13:
+    while choice >= 1 and choice <= 14:
         print("""
         1. Add New Person contact
         2. Switch to the Address Book
@@ -27,7 +27,10 @@ def main():
         9. View sorted contact list
         10. Sort contact list as per city , state or zip code
         11. Display contact details
-        12. Display Full address book contact details\n""")
+        12. Display Full address book contact details
+        13. Write text into text file
+        14. Read text from text file\n
+        """)
 
         choice = int(input("Enter Your Choice: "))
 
@@ -74,48 +77,50 @@ def main():
         elif(choice == 5):
             city_name = input("Enter name of the city ")
             searched_contact = address_book.search_contact_by_city(city_name)
-            print(searched_contact)
+            list_of_contact = address_book.print_contact_list(searched_contact)
+            print(list_of_contact)
             
         elif(choice == 6):
             list_of_city = address_book.view_city()
             for city in list_of_city:
                 print("Name of the city: ", city)
                 contact_list_city = address_book.search_contact_by_city(city)
-                print("Total number of contact present in the state: ", len(contact_list_city))
-                for contact in contact_list_city:
-                    for key in contact:
-                        print(key, ' : ', contact[key])
+                print("Total number of contact present in the city: ", len(contact_list_city))
+                list_of_contact = address_book.print_contact_list(contact_list_city)
+                print(list_of_contact)
 
         elif(choice == 7):
             state_name = input("Enter the name of the state ")
             searched_contact = address_book.search_contact_state(state_name)
-            print(searched_contact)
+            list_of_contact = address_book.print_contact_list(searched_contact)
+            print(list_of_contact)
                 
         elif(choice == 8):
             list_of_state = address_book.view_state()
             for state in list_of_state:
-                print("Name of the city: ", state)
+                print("Name of the state: ", state)
                 contact_list_state = address_book.search_contact_state(state)
                 print("Total number of contact present in the state: ", len(contact_list_state))
-                for contact in contact_list_state:
-                    for key in contact:
-                        print(key, ' : ', contact[key])
+                list_of_contact = address_book.print_contact_list(contact_list_state)
+                print(list_of_contact)
 
         elif(choice == 9):
             sorted_contact_list = address_book.sort_entries()
-            print(sorted_contact_list)
+            sorted_list_of_contact = address_book.print_contact_list(sorted_contact_list)
+            print(sorted_list_of_contact)
 
         elif(choice == 10):
             check_city_state_zip = int(input("1. Sort contact by city name \n 2. Sort contact by state name \n 3. Sort contact by zip code  "))
             if check_city_state_zip == 1:
                 sorted_contact_list = address_book.sort_entries_as_per_city()
-                print(sorted_contact_list)
+                list_of_contact_in_city = address_book.print_contact_list(sorted_contact_list)
+                print(list_of_contact_in_city)
             elif check_city_state_zip == 2:
-                sorted_contact_list = address_book.sort_entries_as_per_state()
-                print(sorted_contact_list)
+                list_of_contact_in_city = address_book.print_contact_list(sorted_contact_list)
+                print(list_of_contact_in_city)
             else:
-                sorted_contact_list = address_book.sort_entries_as_per_zip_code()
-                print(sorted_contact_list)
+                list_of_contact_in_city = address_book.print_contact_list(sorted_contact_list)
+                print(list_of_contact_in_city)
 
         elif(choice == 11):
             address_book.display_contact()
@@ -123,6 +128,12 @@ def main():
         elif(choice == 12):
             address_book_collection.show_contacts()
             print("All Address Book displayed")
+
+        elif(choice == 13):
+            address_book.write_txt()
+        
+        elif(choice == 14):
+            address_book.read_txt()
 
 
 # Driver code
