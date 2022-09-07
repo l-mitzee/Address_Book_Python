@@ -32,38 +32,38 @@ def main():
 
         if(choice == 1):
             while True:
-                first_name = input("Enter your first name: ")
-                if not address_book.check_duplicate(first_name):
+                first = input("Enter your first name: ")
+                if not address_book.check_duplicate(first):
                     break
                 print("Enter new contact details")
-            last_name = input("Enter your last name: ")
+            last = input("Enter your last name: ")
             address = input("Enter your address: ")
             city = input("Enter your city: ")
             state = input("Enter your state: ")
             zip_code = input("Enter zip code: ")
             phone_no = input("Enter your contact number: ")
-            email_id = input("Enter your email address: ")
-            list_person = Person(first_name, last_name, address, city, state, zip_code, phone_no, email_id)
+            email = input("Enter your email address: ")
+            list_person = Person(first, last, address, city, state, zip_code, phone_no, email)
             print(list_person.get)
-            address_book.add_contact(first_name, list_person.get)
+            address_book.add_contact(first, list_person.get)
 
         elif(choice == 2):
             address_book_name = input("Enter the name of the address book: ")
             address_book = address_book_collection.select_address_book(address_book_name, address_book)
 
         elif(choice == 3):
-            first_name = input("Enter the first name which you want to change: ")
-            first_name = input("Enter your first name: ")
-            last_name = input("Enter your last name: ")
+            first = input("Enter the first name which you want to change: ")
+            first = input("Enter your first name: ")
+            last = input("Enter your last name: ")
             address = input("Enter your address: ")
             city = input("Enter your city: ")
             state = input("Enter your state: ")
             zip_code = input("Enter zip code: ")
             phone_no = input("Enter your contact number: ")
-            email_id = input("Enter your email address: ")
-            edited_list_person = Person(first_name, last_name, address, city, state, zip_code, phone_no, email_id)
+            email = input("Enter your email address: ")
+            edited_list_person = Person(first, last, address, city, state, zip_code, phone_no, email)
             print(edited_list_person.get)
-            address_book.edit_contact(first_name, edited_list_person.get) 
+            address_book.edit_contact(first, edited_list_person.get) 
 
         elif(choice == 4):
             first_name_delete = input("Enter the first name which you want to delete: ")
