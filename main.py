@@ -14,7 +14,7 @@ def main():
     choice = 1
     address_book = AddressBook()
     address_book_collection = MulAddressBook()
-    while choice >= 1 and choice <= 14:
+    while choice >= 1 and choice <= 16:
         print("""
         1. Add New Person contact
         2. Switch to the Address Book
@@ -29,7 +29,9 @@ def main():
         11. Display contact details
         12. Display Full address book contact details
         13. Write text into text file
-        14. Read text from text file\n
+        14. Read text from text file
+        15. Write into CSV file
+        16. Read CSV file\n
         """)
 
         choice = int(input("Enter Your Choice: "))
@@ -134,6 +136,12 @@ def main():
         
         elif(choice == 14):
             address_book.read_txt()
+
+        elif(choice == 15):
+            address_book.write_csv()
+
+        elif(choice == 16):
+            address_book.read_csv()
 
 
 # Driver code

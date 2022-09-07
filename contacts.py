@@ -4,6 +4,8 @@
     @Last Modified date: 2022-09-06
     @Title : Create an Address Book and modifying with conditions
 """
+import csv
+from dataclasses import fields
 
 class Person:
     def __init__(self, first, last, address, city, state, zip_code, phone_no, email):
@@ -30,7 +32,9 @@ class Person:
         
 class AddressBook:
     def __init__(self):
-        self.contacts = []
+        self.contacts = [{'first': 'Leo', 'last': 'De', 'address': 'Electronic City', 'city': 'Bangalore', 'state': 'Karnataka', 'zip_code': '560001', 'phone_no': '7890002345', 'email': 'leo.d@gmail.com'},{'first': 'Riya', 'last': 'Bose', 'address': 'Jadavpur', 'city': 'Kolkata', 'state': 'West Bengal', 'zip_code': '700032', 'phone_no': '8976543219', 'email': 'riya.b@gmail.com'},{'first': 'Lisa', 'last': 'Das', 'address': 'Jadavpur', 'city': 'Kolkata', 'state': 'West Bengal', 'zip_code': '700032', 'phone_no': '6295196004', 'email': 'lisa.das@gmail.com'},{'first': 'Piu', 'last': 'De', 'address': 'Electronic City', 'city': 'Bangalore', 'state': 'Karnataka', 'zip_code': '560001', 'phone_no': '9876543221', 'email': 'piu.de@gmail.com'}]
+        # self.fieldnames = fields
+
     @property
     def get(self):
         return self.contacts
@@ -227,6 +231,39 @@ class AddressBook:
                 print(data)
         except FileNotFoundError:
             print("File not Found")
+
+
+    def write_csv(self):
+        """
+        Description:
+            Writing all contact details into csv file
+        Parameter:
+            None
+        Returns:
+            None
+        """
+        file_name = "address_books_contact.csv"
+        with open(file_name, "w") as csv_file:
+            writer = csv.writer(csv_file)
+            writer.writerow(['first', 'last', 'address', 'city', 'state', 'zip_code', 'phone_no', 'email'])
+            for contact in self.contacts:
+                writer.writerow([contact["first"], contact["last"], contact["address"], contact["city"], contact["state"], contact["zip_code"], contact["phone_no"], contact["email"]])
+
+
+    def read_csv(self):
+        """
+        Description:
+            Reading data from csv file
+        Parameter:
+            None
+        Returns:
+            None
+        """
+        file_name = "address_books_contact.csv"
+        with open(file_name, "r") as csv_file:
+            csv_reader = csv.DictReader(csv_file)
+            for line in csv_reader:
+                print(line)
 
 
     def display_contact(self):
