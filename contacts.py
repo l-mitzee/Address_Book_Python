@@ -5,7 +5,8 @@
     @Title : Create an Address Book and modifying with conditions
 """
 import csv
-from dataclasses import fields
+from email.headerregistry import DateHeader
+import json
 
 class Person:
     def __init__(self, first, last, address, city, state, zip_code, phone_no, email):
@@ -32,7 +33,7 @@ class Person:
         
 class AddressBook:
     def __init__(self):
-        self.contacts = []
+        self.contacts = [{'first': 'Leo', 'last': 'De', 'address': 'Electronic City', 'city': 'Bangalore', 'state': 'Karnataka', 'zip_code': '560001', 'phone_no': '7890002345', 'email': 'leo.d@gmail.com'},{'first': 'Riya', 'last': 'Bose', 'address': 'Jadavpur', 'city': 'Kolkata', 'state': 'West Bengal', 'zip_code': '700032', 'phone_no': '8976543219', 'email': 'riya.b@gmail.com'},{'first': 'Lisa', 'last': 'Das', 'address': 'Jadavpur', 'city': 'Kolkata', 'state': 'West Bengal', 'zip_code': '700032', 'phone_no': '6295196004', 'email': 'lisa.das@gmail.com'},{'first': 'Piu', 'last': 'De', 'address': 'Electronic City', 'city': 'Bangalore', 'state': 'Karnataka', 'zip_code': '560001', 'phone_no': '9876543221', 'email': 'piu.de@gmail.com'}]
 
     @property
     def get(self):
@@ -263,6 +264,32 @@ class AddressBook:
             csv_reader = csv.DictReader(csv_file)
             for line in csv_reader:
                 print(line)
+
+    def write_json(self):
+        """
+        Description:
+            Writing all contacts in json file
+        Parameter:
+            None 
+        Returns:
+            None
+        """
+        with open("address_books_contact.json", "w") as json_file:
+            json.dump(self.contacts, json_file, indent = 2)
+
+    def read_json(self):
+        """
+        Description:
+            Reading contacts from json file
+        Parameter:
+            None 
+        Returns:
+            Json data
+        """
+        with open("address_books_contact.json", "r") as json_file:
+            data = json.load(json_file)
+            return data
+
 
 
     def display_contact(self):
