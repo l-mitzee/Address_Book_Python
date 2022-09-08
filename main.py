@@ -40,6 +40,10 @@ if __name__ == '__main__':
         elif(choice == 2):
             address_book_name = input("Enter the name of the address book: ")
             address_book = address_book_collection.select_address_book(address_book_name, address_book)
+            print("Address Book Added")
+            print("Present address Book")
+            for ad_book in address_book_collection.show_contacts():
+                print(ad_book)
 
         elif(choice == 3):
             first_name = input("Enter the first name which you want to change: ")
@@ -61,7 +65,7 @@ if __name__ == '__main__':
             print("Contact deleted successfully")     
 
         elif(choice == 5):
-            address_book.display_contact()
+            address_book.print_contact_list(address_book.get)
 
         elif(choice == 6):
             address_book_collection.show_contacts()
