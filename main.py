@@ -1,7 +1,7 @@
 """
     @Author: Lisa Das
     @Date: 2022-09-05
-    @Last Modified date: 2022-09-05
+    @Last Modified date: 2022-09-08
     @Title : Create an Address Book
 """
 
@@ -40,6 +40,10 @@ if __name__ == '__main__':
         elif(choice == 2):
             address_book_name = input("Enter the name of the address book: ")
             address_book = address_book_collection.select_address_book(address_book_name, address_book)
+            print("Address Book Added")
+            print("Present address Book")
+            for ad_book in address_book_collection.show_contacts():
+                print(ad_book)
 
         elif(choice == 3):
             first_name = input("Enter the first name which you want to change: ")
@@ -63,15 +67,16 @@ if __name__ == '__main__':
         elif(choice == 5):
             city_name = input("Enter name of the city ")
             searched_contact = address_book.search_contact_by_city(city_name)
-            print(searched_contact)
+            address_book.print_contact_list(searched_contact)
+
 
         elif(choice == 6):
             state_name = input("Enter the name of the state ")
             searched_contact = address_book.search_contact_state(state_name)
-            print(searched_contact)
+            address_book.print_contact_list(searched_contact)
 
         elif(choice == 7):
-            address_book.display_contact()
+            address_book.print_contact_list(address_book.get)
 
         elif(choice == 8):
             address_book_collection.show_contacts()
