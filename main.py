@@ -12,6 +12,7 @@ from contacts import Person, AddressBook
 if __name__ == '__main__':
     print("Welcome to the address book program")
     choice = 1
+    address_book = AddressBook()
     while choice >= 1 and choice <= 4:
         print("\n1. Add New Person contact\n2. Edit existing contact details\n3. Delete existing contact details\n4. Display existing contact details\n")
         choice = int(input("Enter Your Choice: "))
@@ -50,6 +51,5 @@ if __name__ == '__main__':
             address_book.delete_contact(first_name_delete)
             print("Contact deleted successfully")
 
-        elif(choice == 4):
-            address_book.display_contact()
-            print("Contact displayed")
+        elif(choice == 11):
+            address_book.print_contact_list(address_book.get)
