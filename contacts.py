@@ -1,7 +1,7 @@
 """
     @Author: Lisa Das
     @Date: 2022-08-02
-    @Last Modified date: 2022-09-05
+    @Last Modified date: 2022-09-08
     @Title : Create an Address Book
 """
 
@@ -85,6 +85,7 @@ class AddressBook:
             if contact["first"] == first:
                 del self.contacts[i]
 
+
     def search_contact_by_city(self, searching_city):
         """
         Description:
@@ -115,13 +116,18 @@ class AddressBook:
                 list_of_contact_in_the_city.append(contact)
         return list_of_contact_in_the_city
 
-    def display_contact(self):
+
+    def print_contact_list(self, contact_list):
         """
         Description:
-            Display existing contact to the list
-        Return:
-            List of contact which is present else empty list
+            Printing the list in string with proper format
+        Parameter:
+            Incoming list which needs to be printed
+        Returns:
+            The complete  list
         """
-        for contact in self.contacts:
-            for key in contact:
-                print(key, ' : ', contact[key])
+        count = 0
+        for contact in contact_list:
+            count += 1
+            print(f'Contact {count}\nFirst_Name : {contact["first"]}, Last_Name : {contact["last"]}, Address : {contact["address"]}, City_Name : {contact["city"]}, State_Name : {contact["state"]}, Zip_Code : {contact["zip_code"]}, Phone_Number : {contact["phone_no"]}, Email_ID : {contact["email"]} \n')
+
