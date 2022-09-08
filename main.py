@@ -14,7 +14,7 @@ if __name__ == '__main__':
     choice = 1
     address_book = AddressBook()
     while choice >= 1 and choice <= 5:
-        print("\n1. Add New Person contact\n2. Edit existing contact details\n3. Delete existing contact details\n4. Display existing contact details\n5. multi existing contact details\n")
+        print("\n1. Add New Person contact\n2. Edit existing contact details\n3. Delete existing contact details\n4. Display existing contact details\n\n")
         choice = int(input("Enter Your Choice: "))
         if(choice == 1):
             first = input("Enter your first name: ")
@@ -40,7 +40,6 @@ if __name__ == '__main__':
             phone_no = int(input("Enter your contact number: "))
             email = input("Enter your email address: ")
             edited_list_person = Person(first, last, address, city, state, zip_code, phone_no, email)
-            # address_book = AddressBook()
             print(edited_list_person.get)
             address_book.edit_contact(first_name, edited_list_person.get) 
 
@@ -50,5 +49,4 @@ if __name__ == '__main__':
             print("Contact deleted successfully")     
 
         elif(choice == 4):
-            address_book.display_contact()
-            print("Contact displayed")
+            address_book.print_contact_list(address_book.get)
