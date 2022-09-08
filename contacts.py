@@ -1,8 +1,8 @@
 """
     @Author: Lisa Das
     @Date: 2022-08-02
-    @Last Modified date: 2022-09-06
-    @Title : Create an Address Book and modifying with conditions
+    @Last Modified date: 2022-09-08
+    @Title : Create an Address Book
 """
 
 class Person:
@@ -18,19 +18,11 @@ class Person:
 
     @property
     def get(self):
-        return {'first': self.first,
-                'last': self.last, 
-                'address': self.address, 
-                'city': self.city, 
-                'state': self.state, 
-                'zip_code': self.zip_code, 
-                'phone_no': self.phone_no, 
-                'email': self.email
-                }
+        return {'first': self.first, 'last': self.last, 'address': self.address, 'city': self.city, 'state': self.state, 'zip_code': self.zip_code, 'phone_no': self.phone_no, 'email': self.email}
         
 class AddressBook:
     def __init__(self):
-        self.contacts = []
+        self.contacts = [{'first': 'Leo', 'last': 'De', 'address': 'Electronic City', 'city': 'Bangalore', 'state': 'Karnataka', 'zip_code': '560001', 'phone_no': '7890002345', 'email': 'leo.d@gmail.com'},{'first': 'Riya', 'last': 'Bose', 'address': 'Jadavpur', 'city': 'Kolkata', 'state': 'West Bengal', 'zip_code': '700032', 'phone_no': '8976543219', 'email': 'riya.b@gmail.com'},{'first': 'Lisa', 'last': 'Das', 'address': 'Jadavpur', 'city': 'Kolkata', 'state': 'West Bengal', 'zip_code': '700032', 'phone_no': '6295196004', 'email': 'lisa.das@gmail.com'},{'first': 'Piu', 'last': 'De', 'address': 'Electronic City', 'city': 'Bangalore', 'state': 'Karnataka', 'zip_code': '560001', 'phone_no': '9876543221', 'email': 'piu.de@gmail.com'}]
     @property
     def get(self):
         return self.contacts
@@ -91,6 +83,7 @@ class AddressBook:
         for i, contact in enumerate(self.contacts):
             if contact["first"] == first:
                 del self.contacts[i]
+
 
     def search_contact_by_city(self, searching_city):
         """
@@ -198,48 +191,6 @@ class AddressBook:
         sorted_entries = sorted(self.contacts, key = lambda a: a["zip_code"])
         return sorted_entries
 
-    def write_txt(self):
-        """
-        Description:
-            Writing all contacts in text file
-        Parameter:
-            None 
-        Returns:
-            None
-        """
-        with open("address_books_contact.txt", "w") as text_file:
-            for contact in self.contacts:
-                text_file.write(f'First_Name : {contact["first"]}, Last_Name : {contact["last"]}, Address : {contact["address"]}, City_Name : {contact["city"]}, State_Name : {contact["state"]}, Zip_Code : {contact["zip_code"]}, Phone_Number : {contact["phone_no"]}, Email_ID : {contact["email"]} \n')
-                text_file.close()
-
-    def read_txt(self):
-        """
-        Description:
-            Reading data from text file
-        Parameter:
-            None
-        Returns:
-            None
-        """
-        try:
-            with open("address_books_contact.txt") as text_file:
-                data = text_file.read()
-                print(data)
-        except FileNotFoundError:
-            print("File not Found")
-
-
-    def display_contact(self):
-        """
-        Description:
-            Display existing contact to the list
-        Return:
-            List of contact which is present else empty list
-        """
-        for contact in self.contacts:
-            for key in contact:
-                print(key, ' : ', contact[key])
-
     def print_contact_list(self, contact_list):
         """
         Description:
@@ -249,9 +200,7 @@ class AddressBook:
         Returns:
             The complete  list
         """
-        list_of_contact = ""
-        count = 1
+        count = 0
         for contact in contact_list:
-            list_of_contact = f'Contact {count}\nFirst_Name : {contact["first"]}, Last_Name : {contact["last"]}, Address : {contact["address"]}, City_Name : {contact["city"]}, State_Name : {contact["state"]}, Zip_Code : {contact["zip_code"]}, Phone_Number : {contact["phone_no"]}, Email_ID : {contact["email"]} \n'
             count += 1
-        return list_of_contact
+            print(f'Contact {count}\nFirst_Name : {contact["first"]}, Last_Name : {contact["last"]}, Address : {contact["address"]}, City_Name : {contact["city"]}, State_Name : {contact["state"]}, Zip_Code : {contact["zip_code"]}, Phone_Number : {contact["phone_no"]}, Email_ID : {contact["email"]} \n')

@@ -33,4 +33,34 @@ class MulAddressBook:
         Description:
             Showing full address book with individual contact details
         """
-        print(self.address_book_name_with_contacts)
+        return self.address_book_name_with_contacts
+
+    def write_txt(self):
+        """
+        Description:
+            Writing all contacts in text file
+        Parameter:
+            None 
+        Returns:
+            None
+        """
+        with open("address_books_contact.txt", "w") as text_file:
+            text_file.write(str(self.address_book_name_with_contacts))
+                # text_file.write(f'First_Name : {contact["first"]}, Last_Name : {contact["last"]}, Address : {contact["address"]}, City_Name : {contact["city"]}, State_Name : {contact["state"]}, Zip_Code : {contact["zip_code"]}, Phone_Number : {contact["phone_no"]}, Email_ID : {contact["email"]} \n')
+
+
+    def read_txt(self):
+        """
+        Description:
+            Reading data from text file
+        Parameter:
+            None
+        Returns:
+            None
+        """
+        try:
+            with open("address_books_contact.txt") as text_file:
+                data = text_file.read()
+                print(data)
+        except FileNotFoundError:
+            print("File not Found")
