@@ -1,8 +1,8 @@
 """
     @Author: Lisa Das
     @Date: 2022-08-02
-    @Last Modified date: 2022-09-06
-    @Title : Create an Address Book and modifying with conditions
+    @Last Modified date: 2022-09-08
+    @Title : Create an Address Book
 """
 
 class Person:
@@ -18,15 +18,7 @@ class Person:
 
     @property
     def get(self):
-        return {'first': self.first,
-                'last': self.last, 
-                'address': self.address, 
-                'city': self.city, 
-                'state': self.state, 
-                'zip_code': self.zip_code, 
-                'phone_no': self.phone_no, 
-                'email': self.email
-                }
+        return {'first': self.first, 'last': self.last, 'address': self.address, 'city': self.city, 'state': self.state, 'zip_code': self.zip_code, 'phone_no': self.phone_no, 'email': self.email}
         
 class AddressBook:
     def __init__(self):
@@ -92,6 +84,7 @@ class AddressBook:
         for i, contact in enumerate(self.contacts):
             if contact["first"] == first:
                 del self.contacts[i]
+
 
     def search_contact_by_city(self, searching_city):
         """
@@ -160,7 +153,7 @@ class AddressBook:
         Returns:
             Sorted list of contact
         """
-        sorted_entries = sorted(self.contacts, key = lambda a: a["first_name"])
+        sorted_entries = sorted(self.contacts, key = lambda a: a["first"])
         return sorted_entries
 
     def sort_entries_as_per_city(self):
@@ -199,13 +192,16 @@ class AddressBook:
         sorted_entries = sorted(self.contacts, key = lambda a: a["zip_code"])
         return sorted_entries
 
-    def display_contact(self):
+    def print_contact_list(self, contact_list):
         """
         Description:
-            Display existing contact to the list
-        Return:
-            List of contact which is present else empty list
+            Printing the list in string with proper format
+        Parameter:
+            Incoming list which needs to be printed
+        Returns:
+            The complete  list
         """
-        for contact in self.contacts:
-            for key in contact:
-                print(key, ' : ', contact[key])
+        count = 0
+        for contact in contact_list:
+            count += 1
+            print(f'Contact {count}\nFirst_Name : {contact["first"]}, Last_Name : {contact["last"]}, Address : {contact["address"]}, City_Name : {contact["city"]}, State_Name : {contact["state"]}, Zip_Code : {contact["zip_code"]}, Phone_Number : {contact["phone_no"]}, Email_ID : {contact["email"]} \n')
