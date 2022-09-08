@@ -1,8 +1,8 @@
 """
     @Author: Lisa Das
     @Date: 2022-08-02
-    @Last Modified date: 2022-09-06
-    @Title : Create an Address Book and modifying with conditions
+    @Last Modified date: 2022-09-08
+    @Title : Create an Address Book
 """
 import csv
 from dataclasses import fields
@@ -20,15 +20,7 @@ class Person:
 
     @property
     def get(self):
-        return {'first': self.first,
-                'last': self.last, 
-                'address': self.address, 
-                'city': self.city, 
-                'state': self.state, 
-                'zip_code': self.zip_code, 
-                'phone_no': self.phone_no, 
-                'email': self.email
-                }
+        return {'first': self.first, 'last': self.last, 'address': self.address, 'city': self.city, 'state': self.state, 'zip_code': self.zip_code, 'phone_no': self.phone_no, 'email': self.email}
         
 class AddressBook:
     def __init__(self):
@@ -94,6 +86,7 @@ class AddressBook:
         for i, contact in enumerate(self.contacts):
             if contact["first"] == first:
                 del self.contacts[i]
+
 
     def search_contact_by_city(self, searching_city):
         """
@@ -201,81 +194,6 @@ class AddressBook:
         sorted_entries = sorted(self.contacts, key = lambda a: a["zip_code"])
         return sorted_entries
 
-    def write_txt(self):
-        """
-        Description:
-            Writing all contacts in text file
-        Parameter:
-            None 
-        Returns:
-            None
-        """
-        with open("address_books_contact.txt", "w") as text_file:
-            for contact in self.contacts:
-                text_file.write(f'First_Name : {contact["first"]}, Last_Name : {contact["last"]}, Address : {contact["address"]}, City_Name : {contact["city"]}, State_Name : {contact["state"]}, Zip_Code : {contact["zip_code"]}, Phone_Number : {contact["phone_no"]}, Email_ID : {contact["email"]} \n')
-                text_file.close()
-
-    def read_txt(self):
-        """
-        Description:
-            Reading data from text file
-        Parameter:
-            None
-        Returns:
-            None
-        """
-        try:
-            with open("address_books_contact.txt") as text_file:
-                data = text_file.read()
-                print(data)
-        except FileNotFoundError:
-            print("File not Found")
-
-
-    def write_csv(self):
-        """
-        Description:
-            Writing all contact details into csv file
-        Parameter:
-            None
-        Returns:
-            None
-        """
-        file_name = "address_books_contact.csv"
-        with open(file_name, "w") as csv_file:
-            writer = csv.writer(csv_file)
-            writer.writerow(['first', 'last', 'address', 'city', 'state', 'zip_code', 'phone_no', 'email'])
-            for contact in self.contacts:
-                writer.writerow([contact["first"], contact["last"], contact["address"], contact["city"], contact["state"], contact["zip_code"], contact["phone_no"], contact["email"]])
-
-
-    def read_csv(self):
-        """
-        Description:
-            Reading data from csv file
-        Parameter:
-            None
-        Returns:
-            None
-        """
-        file_name = "address_books_contact.csv"
-        with open(file_name, "r") as csv_file:
-            csv_reader = csv.DictReader(csv_file)
-            for line in csv_reader:
-                print(line)
-
-
-    def display_contact(self):
-        """
-        Description:
-            Display existing contact to the list
-        Return:
-            List of contact which is present else empty list
-        """
-        for contact in self.contacts:
-            for key in contact:
-                print(key, ' : ', contact[key])
-
     def print_contact_list(self, contact_list):
         """
         Description:
@@ -285,9 +203,7 @@ class AddressBook:
         Returns:
             The complete  list
         """
-        list_of_contact = ""
-        count = 1
+        count = 0
         for contact in contact_list:
-            list_of_contact = f'Contact {count}\nFirst_Name : {contact["first"]}, Last_Name : {contact["last"]}, Address : {contact["address"]}, City_Name : {contact["city"]}, State_Name : {contact["state"]}, Zip_Code : {contact["zip_code"]}, Phone_Number : {contact["phone_no"]}, Email_ID : {contact["email"]} \n'
             count += 1
-        return list_of_contact
+            print(f'Contact {count}\nFirst_Name : {contact["first"]}, Last_Name : {contact["last"]}, Address : {contact["address"]}, City_Name : {contact["city"]}, State_Name : {contact["state"]}, Zip_Code : {contact["zip_code"]}, Phone_Number : {contact["phone_no"]}, Email_ID : {contact["email"]} \n')
