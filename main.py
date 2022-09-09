@@ -20,6 +20,7 @@ if __name__ == '__main__':
     phone_no = int(input("Enter your contact number: "))
     email = input("Enter your email address: ")
     list_person = Person(first, last, address, city, state, zip_code, phone_no, email)
+    print(type(list_person))
     address_book = AddressBook()
     print(list_person.get)
     address_book.add_contact(list_person.get)
