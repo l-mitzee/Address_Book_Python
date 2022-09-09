@@ -1,12 +1,15 @@
 """
     @Author: Lisa Das
-    @Date: 2022-08-02
-    @Last Modified date: 2022-09-05
+    @Date: 2022-09-09
+    @Last Modified time: 2022-09-09
     @Title : Create an Address Book
 """
 
 class Person:
     def __init__(self, first, last, address, city, state, zip_code, phone_no, email):
+        """
+        Initializing first, last, address, city, state, zip_code, phone_no, email details with the variable name
+        """
         self.first = first
         self.last = last
         self.address = address
@@ -22,7 +25,13 @@ class Person:
         
 class AddressBook:
     def __init__(self):
-        self.contacts = []
+        """
+        Initializing an empty list for contact details
+        """
+        self.contacts = [{'first': 'Leo', 'last': 'De', 'address': 'Electronic City', 'city': 'Bangalore', 'state': 'Karnataka', 'zip_code': '560001', 'phone_no': '7890002345', 'email': 'leo.d@gmail.com'},
+                        {'first': 'Riya', 'last': 'Bose', 'address': 'Jadavpur', 'city': 'Kolkata', 'state': 'West Bengal', 'zip_code': '700032', 'phone_no': '8976543219', 'email': 'riya.b@gmail.com'},
+                        {'first': 'Lisa', 'last': 'Das', 'address': 'Jadavpur', 'city': 'Kolkata', 'state': 'West Bengal', 'zip_code': '700032', 'phone_no': '6295196004', 'email': 'lisa.das@gmail.com'},
+                        {'first': 'Piu', 'last': 'De', 'address': 'Electronic City', 'city': 'Bangalore', 'state': 'Karnataka', 'zip_code': '560001', 'phone_no': '9876543221', 'email': 'piu.de@gmail.com'}]
 
     @property
     def get(self):
@@ -31,14 +40,18 @@ class AddressBook:
     def add_contact(self, first, contact):
         """
         Description:
-            Adding new contact to the list
+            Adds contact into the existing contact list
         Parameter:
-            All contact details from user
+            Person details as input
         Return:
-            List of contact in the form of dictionery
+            List of all contacts after adding contact of the person
         """
-        
+        if type(contact["phone_no"]) != int:
+            raise TypeError("Phone number must be a number")
+        if type(contact["zip_code"]) != int:
+            raise TypeError("Zip code must be a number")
         self.contacts.append(contact)
+        return self.contacts
 
     def check_duplicate(self, first):
         """
@@ -53,11 +66,12 @@ class AddressBook:
             if contact["first"] == first:
                 return True
         return False
-    
+  
+
     def edit_contact(self, first, new_name):
         """
         Description:
-            Editing existing contact to the list
+            Editing existing contact with all details searching by first name contact to the list
         Parameter:
             First name and new contact details
         Return:
@@ -65,6 +79,10 @@ class AddressBook:
         """
         for contact in self.contacts:
             if contact["first"] == first:
+                if type(contact["zip_code"]) != int:
+                    raise TypeError("Zip code must be a number")
+                if type(contact["phone_no"]) != int:
+                    raise TypeError("Phone number must be a number")
                 contact["first"] = new_name["first"]
                 contact["last"] = new_name["last"]
                 contact["address"] = new_name["address"]
@@ -73,6 +91,7 @@ class AddressBook:
                 contact["zip_code"] = new_name["zip_code"]
                 contact["phone_no"] = new_name["phone_no"]
                 contact["email"] = new_name["email"]
+        return new_name
 
     def delete_contact(self, first):
         """
@@ -84,6 +103,7 @@ class AddressBook:
         for i, contact in enumerate(self.contacts):
             if contact["first"] == first:
                 del self.contacts[i]
+        return self.contacts
 
     def print_contact_list(self, contact_list):
         """
