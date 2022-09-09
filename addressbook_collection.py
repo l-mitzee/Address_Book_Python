@@ -11,7 +11,7 @@ class MulAddressBook:
         self.address_book_name_with_contacts = {}
 
 
-    def select_address_book(self, address_book_name, current_address_book_contact):
+    def switch_address_book(self, address_book_name, current_address_book_contact):
         """
         Description:
             Adding multiple address book with user contact details
@@ -20,10 +20,10 @@ class MulAddressBook:
         Return:
             List of contact with addressbook name
         """
-        self.address_book_name_with_contacts[self.current_address_book] = current_address_book_contact.get
+        self.address_book_name_with_contacts[self.current_address_book] = current_address_book_contact
         self.current_address_book = address_book_name
-        current_address_book_contact.contacts = []
-        return current_address_book_contact
+        current_address_book_contact = []
+        return address_book_name
 
     def show_contacts(self):
         """
