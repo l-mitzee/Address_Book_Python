@@ -1,7 +1,7 @@
 """
     @Author: Lisa Das
-    @Date: 2022-08-31
-    @Last Modified date: 2022-09-02
+    @Date: 2022-09-09
+    @Last Modified date: 2022-09-09
     @Title : Create an Address Book
 """
 
@@ -15,6 +15,8 @@ if __name__ == '__main__':
     while choice >= 1 and choice <= 2:
         print("\n1. Add New Person contact\n2. Edit existing contact details\n")
         choice = int(input("Enter Your Choice: "))
+
+        # Adding new Contacts
         if(choice == 1):
             first = input("Enter your first name: ")
             last = input("Enter your last name: ")
@@ -28,7 +30,8 @@ if __name__ == '__main__':
             address_book = AddressBook()
             print(list_person.get)
             address_book.add_contact(list_person.get)
-
+            
+        # Editing existing contact
         elif(choice == 2):
             first_name = input("Enter the first name which you want to change: ")
             first = input("Enter your first name: ")
@@ -42,4 +45,4 @@ if __name__ == '__main__':
             edited_list_person = Person(first, last, address, city, state, zip_code, phone_no, email)
             address_book = AddressBook()
             print(edited_list_person.get)
-            address_book.edit_contact(first_name, edited_list_person)    
+            address_book.edit_contact(first_name, edited_list_person)
