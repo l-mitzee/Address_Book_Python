@@ -1,7 +1,7 @@
 """
     @Author: Lisa Das
-    @Date: 2022-08-31
-    @Last Modified date: 2022-09-02
+    @Date: 2022-09-09
+    @Last Modified date: 2022-09-09
     @Title : Create an Address Book
 """
 
@@ -16,6 +16,8 @@ if __name__ == '__main__':
     while choice >= 1 and choice <= 5:
         print("\n1. Add New Person contact\n2. Edit existing contact details\n3. Delete existing contact details\n4. Display existing contact details\n\n")
         choice = int(input("Enter Your Choice: "))
+
+        # Adding new Contacts
         if(choice == 1):
             first = input("Enter your first name: ")
             last = input("Enter your last name: ")
@@ -28,7 +30,8 @@ if __name__ == '__main__':
             list_person = Person(first, last, address, city, state, zip_code, phone_no, email)
             print(list_person.get)
             address_book.add_contact(list_person.get)
-
+            
+        # Editing existing contact
         elif(choice == 2):
             first_name = input("Enter the first name which you want to change: ")
             first = input("Enter your first name: ")
@@ -41,12 +44,14 @@ if __name__ == '__main__':
             email = input("Enter your email address: ")
             edited_list_person = Person(first, last, address, city, state, zip_code, phone_no, email)
             print(edited_list_person.get)
-            address_book.edit_contact(first_name, edited_list_person.get) 
+            address_book.edit_contact(first_name, edited_list_person) 
 
+        # Delete contact from existing contact list
         elif(choice == 3):
             first_name_delete = input("Enter the first name which you want to delete: ")
             address_book.delete_contact(first_name_delete)
             print("Contact deleted successfully")     
 
+        #Printing all current contact details
         elif(choice == 4):
             address_book.print_contact_list(address_book.get)
