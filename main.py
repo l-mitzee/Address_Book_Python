@@ -1,7 +1,7 @@
 """
     @Author: Lisa Das
-    @Date: 2022-09-05
-    @Last Modified date: 2022-09-08
+    @Date: 2022-09-09
+    @Last Modified date: 2022-09-09
     @Title : Create an Address Book
 """
 
@@ -16,10 +16,11 @@ if __name__ == '__main__':
     choice = 1
     address_book = AddressBook()
     address_book_collection = MulAddressBook()
-    while choice >= 1 and choice <= 9:
-        print("\n1. Add New Person contact\n2. Switch to the Address Book \n3. Edit existing contact details\n4. Delete existing contact details\n5. Searching contacts as per city \n6. Searching contacts as per state\n7. Display contact details \n8. Display Full address book contact details\n")
+    while choice >= 1 and choice <= 6:
+        print("\n1. Add New Person contact\n2. Switch to the Address Book \n3. Edit existing contact details\n4. Delete existing contact details\n5. Display contact details\n6. Display Full address book contact details\n")
         choice = int(input("Enter Your Choice: "))
 
+        # Adding new Contacts
         if(choice == 1):
             while True:
                 first = input("Enter your first name: ")
@@ -30,8 +31,8 @@ if __name__ == '__main__':
             address = input("Enter your address: ")
             city = input("Enter your city: ")
             state = input("Enter your state: ")
-            zip_code = input("Enter zip code: ")
-            phone_no = input("Enter your contact number: ")
+            zip_code = int(input("Enter zip code: "))
+            phone_no = int(input("Enter your contact number: "))
             email = input("Enter your email address: ")
             list_person = Person(first, last, address, city, state, zip_code, phone_no, email)
             print(list_person.get)
@@ -39,12 +40,13 @@ if __name__ == '__main__':
 
         elif(choice == 2):
             address_book_name = input("Enter the name of the address book: ")
-            address_book = address_book_collection.select_address_book(address_book_name, address_book)
+            address_book = address_book_collection.select_address_book(address_book_name, address_book.get)
             print("Address Book Added")
             print("Present address Book")
             for ad_book in address_book_collection.show_contacts():
                 print(ad_book)
-
+        
+        # Editing existing contact
         elif(choice == 3):
             first_name = input("Enter the first name which you want to change: ")
             first = input("Enter your first name: ")
@@ -52,13 +54,14 @@ if __name__ == '__main__':
             address = input("Enter your address: ")
             city = input("Enter your city: ")
             state = input("Enter your state: ")
-            zip_code = input("Enter zip code: ")
-            phone_no = input("Enter your contact number: ")
+            zip_code = int(input("Enter zip code: "))
+            phone_no = int(input("Enter your contact number: "))
             email = input("Enter your email address: ")
             edited_list_person = Person(first, last, address, city, state, zip_code, phone_no, email)
             print(edited_list_person.get)
-            address_book.edit_contact(first_name, edited_list_person.get) 
+            address_book.edit_contact(first_name, edited_list_person) 
 
+        # Delete contact from existing contact list
         elif(choice == 4):
             first_name_delete = input("Enter the first name which you want to delete: ")
             address_book.delete_contact(first_name_delete)
